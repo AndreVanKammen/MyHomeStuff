@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <title>Licht</title>
+    <script src="mqttws31.js"></script>
+    <style>
+        body
+        {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font: 16px sans-serif;
+            background: #222;
+            color: white;
+            overflow-y: auto;
+            vertical-align: middle;
+        }
+
+        .label
+        {
+            color: #999;
+            margin: 10px;
+            display: inline-block;
+            width: 32%;
+            height: 40px;
+        }
+
+        button
+        {
+            box-shadow: 0px 1px 2px 2px black inset;
+            color: #bbb;
+            display: inline-block;
+            width: 30%;
+            max-width: 88px;
+            height: 36px;
+            background: #777;
+            border: none;
+            padding: 0;
+            margin: 0;
+            border-radius: 2px;
+            outline: none;
+        }
+
+            button.preferred
+            {
+                box-shadow: 0px 2px 1px black;
+                color: white;
+            }
+
+            button:active
+            {
+                background: #555;
+            }
+    </style>
+</head>
+<body>
+    <center>
+    <div id="lampControl" style="max-width: 800px; padding-top: 20px">
+    </div>
+    </center>
+    <script>
+        var clientId = Math.random().toString(36).substr(2, 9);
+        client = new Paho.MQTT.Client("pi.hole", 9001, "client-" + clientId); //TODO: add unique id in localstorage or cookie for clientid
+        client.onConnectionLost = onConnectionLost;
+        client.onMessageArrived = onMessageArrived;
+        client.connect({ onSuccess: onConnect });
+
+        var testMqtt = null;
+
+        function onConnect() {
+            // Once a connection has been made, make a subscription and send a message.
+            console.log("Connect");
+            client.subscribe("stat/sonoff/POWER");
+
+            //var on = false;
+            // //The lengths you have to go trough because javascript doesn't have a concept of sleep 
+            // //and all the stack overflow answers on the question are filled with idiots
+            // //as simple test as this
+            // //  for (var i=0; i<50; i++) {
+            // //     doSonoff(0, on = !on);
+            // //     sleep(200);
+            // //  }
+            // //turns into
+            //var i = 20, ie = setInterval(function() {
+            //   doSonoff(0, on = !on);
+            //   if (i-- == 0) clearInterval(ie);
+            //}, 100);
+        };
+        function onConnectionLost(responseObject) {
+            //if (responseObject.errorCode !== 0) 
+            console.log("ConnectionLost:", responseObject);
+            setTimeout(function () {
+                client.connect({ onSuccess: onConnect });
+            }, 100);
+        };
+
+        function onMessageArrived(message) {
+            console.log("MessageArrived:", message);
+            if (testMqtt) {
+                var lmp = testMqtt;
+                lmp.label.innerText = lmp.Name + '(' + message.payloadString.toLowerCase() + ')';
+                if (message.payloadString.toLowerCase() === 'on') {
+                    lmp.bAan.classList.remove('preferred');
+                    lmp.bUit.classList.add('preferred');
+                } else {
+                    lmp.bAan.classList.add('preferred');
+                    lmp.bUit.classList.remove('preferred');
+                }
+            }
+        };
+
+        var lamps = {};
+
+        function doLamp(u, c) {
+            var oReq = new XMLHttpRequest();
+            oReq.onload = function () {
+                //if (oReq.readyState == 4) {
+                var result = JSON.parse(oReq.responseText);
+
+                // Update to our command, unit sends old value (on purpose so could do toggle check here)
+                result.lastValues[u] = c;
+
+                for (var i = 0; i < result.lastValues.length; i++) {
+                    var lmp = lamps[i];
+                    if (lmp) {
+                        lmp.label.innerText = lmp.Name + '(' + (result.lastValues[i] ? 'aan:' : 'uit:') + result.cmdCounts[i] + ')';
+                        if (result.lastValues[i]) {
+                            lmp.bAan.classList.remove('preferred');
+                            lmp.bUit.classList.add('preferred');
+                        } else {
+                            lmp.bAan.classList.add('preferred');
+                            lmp.bUit.classList.remove('preferred');
+                        }
+                    }
+                }
+                //}
+            };
+            oReq.open("GET", "http://192.168.1.9/lamp?unit=" + u + "&cmd=" + c);
+            oReq.send();
+        }
+
+        function doSonoff(ip, c) {
+            var oReq = new XMLHttpRequest();
+            oReq.onload = function () {
+            };
+            //client.send('cmnd/sonoff/power', c ? 'on' : 'off', 1, true);
+            client.send('cmnd/relais/power', c ? 'A' : '0', 1, true);
+            //oReq.open("GET", "http://" + ip + "/cm?cmnd=" + (c ? "power on" : "power off"));
+            //oReq.send();
+        }
+
+        function El(Element, parent, className, innerText) {
+            var res = document.createElement(Element);
+            if (className)
+                res.classList.add(className);
+            if (parent)
+                parent.appendChild(res);
+            if (innerText)
+                res.innerText = innerText;
+            return res;
+        }
+
+        function createControl(lampNr, name, isSonoff) {
+            var lmp = {
+                bAan: El('button', lampControl, null, 'AAN'),
+                label: El('div', lampControl, "label", name),
+                bUit: El('button', lampControl, null, 'UIT'),
+                Name: name
+            };
+            lamps[lampNr] = lmp;
+            if (isSonoff) {
+                lmp.bAan.onclick = doSonoff.bind(null, lampNr, 1);
+                lmp.bUit.onclick = doSonoff.bind(null, lampNr, 0);
+            } else {
+                lmp.bAan.onclick = doLamp.bind(null, lampNr, 1);
+                lmp.bUit.onclick = doLamp.bind(null, lampNr, 0);
+            }
+            El('br', lampControl);
+            return lmp;
+        }
+
+        createControl(0, 'keuken');
+        createControl(1, 'bar');
+        createControl(2, 'kamer');
+        createControl(4, 'computer');
+        createControl(6, 'bank');
+        testMqtt = createControl('192.168.1.13', 'test', true);
+        var btn1 = El('button', lampControl,null,"dindong1");
+        btn1.onclick = function () {
+            client.send('stat/doorbell/pressed', '{"vcc":2345}', 1, false);
+        };
+        var btn2 = El('button', lampControl, null, "dindong2");
+        btn2.onclick = function () {
+            client.send('stat/doorbell/pressed', '{"vcc":2345,"melody":[620,500]}', 1, false);
+        };
+        
+        var btn3 = El('button', lampControl, null, "jacob");
+        btn3.onclick = function () {
+            client.send('stat/doorbell/pressed', '{melody:[262,294,330,262,262,294,330,262,330,349,392,0,330,349,392,0,392,440,392,349,330,262]}', 1, false);
+        };
+        var btn4 = El('button', lampControl, null, "twinkel");
+        btn4.onclick = function () {
+            client.send('stat/doorbell/pressed', '{melody:[523,523,784,784,880,880,784,0,698,698,659,659,587,587,523,0]}', 1, false);
+        };
+    </script>
+</body>

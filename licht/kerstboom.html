@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <title>Kerstboom licht</title>
+    <style>
+        body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font: 16px sans-serif;
+            background: #222;
+            color: white;
+            overflow-y: auto;
+            vertical-align: middle;
+        }
+
+        .label {
+            color: #999;
+            margin: 10px;
+            display: inline-block;
+            width: 32%;
+            height: 40px;
+        }
+
+        #LightCanvas {
+            position: fixed;
+            /* width: 12px; */
+            height: calc(100% - 40px);
+            left: 0;
+            top: 0;
+        }
+
+        #Menu {
+            position: absolute;
+            width: calc(100% - 8px);
+            border-top: 1px solid gray;
+            background: #444;
+            height: 31px;
+            left: 0;
+            bottom: 0;
+            padding: 4px;
+        }
+
+        #ChristmassControl {
+            position: absolute;
+            background: linear-gradient(90deg, rgb(120, 0, 120) 0%, rgb(120, 0, 0) 16.67%, rgb(120, 120, 0) 33.33%, rgb(0, 120, 0) 50%, rgb(0, 120, 120) 66.66%, rgb(0, 0, 120) 83.33%, rgb(120, 0, 120) 100%);
+            width: calc(100% - 12px);
+            height: calc(100% - 40px);
+            left: 12px;
+            top: 0;
+        }
+
+        #ColorSelectCanvas {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+        }
+
+        .pixel {
+            background: red;
+            position: relative;
+            border-radius: 12px;
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+        }
+
+        .color-div {
+            position: relative;
+            display: inline-block;
+            width: calc(33.33% - 1px);
+            border-left: 1px solid gray;
+            height: 100%;
+        }
+
+        .hide-color-divs .color-div {
+            display: none;
+        }
+
+        .color-slider {
+            position: absolute;
+            background: gray;
+            height: 1px;
+            width: calc(100% - 8px);
+            left: 4px;
+            top: 50%;
+        }
+
+        .color-slider-nob {
+            position: absolute;
+            background: none;
+            border: 1px solid gray;
+            border-radius: 3px;
+            width: 20px;
+            height: 20px;
+            left: 50%;
+            top: 50%;
+            transform-origin: 50% 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        /* .color-slider:hover {
+            background: white;
+        }
+
+        .color-slider:hover .color-slider-nob {
+            border: 1px solid white;
+        } */
+
+        #RedSelect {
+            background-image: linear-gradient(red, black);
+        }
+
+        #GreenSelect {
+            background-image: linear-gradient(green, black);
+        }
+
+        #BlueSelect {
+            background-image: linear-gradient(blue, black);
+        }
+
+        button {
+            color: white;
+            display: inline-block;
+            width: 24%;
+            max-width: 88px;
+            height: 100%;
+            background: #7777ff;
+            border: none;
+            padding: 0;
+            margin: 0;
+            border-radius: 2px;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Menu">
+        <button id="FireButton" onclick="javascript:cmd(commands.fire)">fire</button>
+        <button id="PauseButton" onclick="javascript:cmd(commands.pause)"></button>
+        <button id="SingleButton" onclick="javascript:cmd(commands.single)"></button>
+    </div>
+    <div id="ChristmassControl"><canvas id="ColorSelectCanvas" width="240" height="10"></canvas></div>
+    <canvas id="LightCanvas" width="3" height="300"></canvas>
+    <script>
+        HTMLElement.prototype.el = function (id, className, tagName, innerText) {
+            var res = document.createElement(tagName || 'div');
+            this.appendChild(res);
+            id && (res.id = id);
+            className && res.classList.add(className);
+            innerText && (res.innerText = innerText);
+            return res;
+        }
+
+        for (let color of ['Red', 'Green', 'Blue']) {
+            ChristmassControl
+                .el(color + 'Select', 'color-div')
+                .el(color + 'Slider', 'color-slider')
+                .el(undefined, 'color-slider-nob');
+            window[color + 'Slider'].dataValue = 0.5;
+        }
+        let sliders = [RedSlider, GreenSlider, BlueSlider];
+
+        var singleMode = false;
+        var paused = false;
+        var ledCount = 150; // This is updated through setPixelData
+
+        function getColor(x) {
+            x = Math.min(Math.max(x,0.0),1.0);
+            let f = (x-0.0000000001) * 6;
+            let prog = f % 1.0;
+            let ix = ~~f;
+            if ((ix & 1) === 0)
+                prog = 1.0 - prog;
+            switch (ix) {
+                case 0: return [/*--*/ 255, /*----*/ 0, prog * 255];
+                case 1: return [/*--*/ 255, prog * 255, /*----*/ 0];
+                case 2: return [prog * 255, /*--*/ 255, /*----*/ 0];
+                case 3: return [         0, /*--*/ 255, prog * 255];
+                case 4: return [         0, prog * 255, /*--*/ 255];
+                case 5: return [prog * 255, /*----*/ 0, /*--*/ 255];
+            }
+        }
+
+        // function fillGradient() {
+        //     ColorSelectCanvas.width = 480;
+        //     ColorSelectCanvas.height = 200;
+        //     var ctx = ColorSelectCanvas.getContext('2d');
+        //     var imgData = ctx.createImageData(480, 200);
+        //     let i = 0;
+        //     let r = 240;
+        //     let g = 0;
+        //     let b = 240;
+        //     for (let y = 0; y < 200; y++)
+        //         for (let x = 0; x < 480; x++) {
+        //             if (x % 2 == y % 2) {
+        //                 imgData.data[i++] = 0;
+        //                 imgData.data[i++] = 0;
+        //                 imgData.data[i++] = 0;
+        //             } else {
+        //                 var clr = getColor(x / 480);
+        //                 imgData.data[i++] = clr[0];
+        //                 imgData.data[i++] = clr[1];
+        //                 imgData.data[i++] = clr[2];
+        //             } 
+        //             imgData.data[i++] = 255;
+        //         }
+        //     ctx.putImageData(imgData, 0, 0);
+        // }
+        // fillGradient();
+
+        // function setPixelData(data) {
+        //     ledCount = data.length / 3;
+        //     LightCanvas.height = ledCount * 2 + 1;
+        //     var ctx = LightCanvas.getContext('2d');
+        //     var imgData = ctx.createImageData(1, ledCount * 2);
+        //     var x = 0;
+        //     for (var i = data.length - 3; i >= 0; i -= 3) {
+        //         imgData.data[x++] = 0;
+        //         imgData.data[x++] = 0;
+        //         imgData.data[x++] = 0;
+        //         imgData.data[x++] = 0;
+
+        //         imgData.data[x++] = Math.pow(data[i] / 255, 0.25) * 255;
+        //         imgData.data[x++] = Math.pow(data[i + 1] / 255, 0.25) * 255;
+        //         imgData.data[x++] = Math.pow(data[i + 2] / 255, 0.25) * 255;
+        //         imgData.data[x++] = 255; // Alpha
+        //     }
+        //     ctx.putImageData(imgData, 1, 0);
+        // }
+        function setPixelData(data) {
+            let col = 15
+            let row = 20
+            ledCount = data.length / 3;
+            LightCanvas.width = row * 2 + 1;
+            LightCanvas.height = col * 2 + 1;
+            var ctx = LightCanvas.getContext('2d');
+            var imgData = ctx.createImageData(row * 2, col * 2);
+            var x = row*8;
+            for (var i = data.length - 3; i >= 0; i -= 3) {
+
+                imgData.data[x++] = 0;
+                imgData.data[x++] = 0;
+                imgData.data[x++] = 0;
+                imgData.data[x++] = 0;
+
+                imgData.data[x++] = Math.pow(data[i] / 255, 0.25) * 255;
+                imgData.data[x++] = Math.pow(data[i + 1] / 255, 0.25) * 255;
+                imgData.data[x++] = Math.pow(data[i + 2] / 255, 0.25) * 255;
+                imgData.data[x++] = 255; // Alpha
+
+                if ((i % (3*row))===0) {
+                    x += row*8;
+                }
+            }
+            ctx.putImageData(imgData, 0, 0);
+        }
+
+        const linearstep = (min, max, val) => Math.max(0, Math.min(1, (val - min) / (max - min)));
+
+        let pixelData = new Uint8Array(ledCount * 3);
+        var mouseIsDown = false;
+        var touchColorIx = 0;
+        var touchColors = [[255, 255, 255], [255, 0, 0], [0, 255, 0], [0, 0, 255], [255, 255, 0], [255, 0, 255], [0, 255, 255]];
+        var touchColorsById = {}
+
+        setInterval(() => {
+            if (mouseIsDown) {
+                if (websocket.readyState===websocket.OPEN) {
+                    window.websocket.send(pixelData);
+                } else {
+                    setPixelData(pixelData);
+                }
+            }
+        }, 50);
+
+        const clearPixelData = () => {
+            pixelData = new Uint8Array(ledCount * 3);
+        }
+
+        const updatePixelData = (y, r, g, b) => {
+            let pos = ledCount * y;
+            for (let i = 0; i < ledCount; i++) {
+                let dist = singleMode
+                    ? pos / ledCount
+                    : Math.pow(1.0 - linearstep(0.01, 0.06, Math.abs(i - pos) / ledCount), 5.0);
+                let ofs = i * 3;
+                pixelData[ofs/**/] = Math.min(255, pixelData[ofs/**/] + ~~(dist * r));
+                pixelData[ofs + 1] = Math.min(255, pixelData[ofs + 1] + ~~(dist * g));
+                pixelData[ofs + 2] = Math.min(255, pixelData[ofs + 2] + ~~(dist * b));
+            }
+        }
+
+        const touchHandler = (touch) => {
+            let colorIx = touchColorsById[touch.identifier];
+            if (colorIx === undefined) {
+                colorIx = singleMode
+                    ? ~~(1 + touch.clientX * 3 / ChristmassControl.clientWidth)
+                    : (touchColorIx + 1) % touchColors.length;
+                touchColorsById[touch.identifier] = colorIx;
+            }
+            const y = Math.min(Math.max(1.0 - touch.clientY / ChristmassControl.clientHeight, 0.0), 1.0)
+            const colors = getColor(touch.clientX / ChristmassControl.clientWidth); // touchColors[colorIx];
+            if (singleMode) {
+                sliders[colorIx - 1].dataValue = y;
+                sliders[colorIx - 1].style.top = ((1.0 - y) * 100).toFixed(3) + '%';
+                updatePixelData(1.0,
+                    sliders[0].dataValue * 255,
+                    sliders[1].dataValue * 255,
+                    sliders[2].dataValue * 255);
+            } else {
+                updatePixelData(y, colors[0], colors[1], colors[2]);
+            }
+        }
+
+        const moveHandler = (evt) => {
+            clearPixelData();
+            if (evt.touches) {
+                for (let touch of evt.touches) {
+                    touchHandler(touch);
+                }
+            } else {
+                touchHandler({ identifier: 1, clientX: evt.clientX, clientY: evt.clientY });
+            }
+            evt.preventDefault();
+            evt.stopPropagation()
+        };
+
+        const upHandler = (evt) => {
+            if (evt.touches && evt.touches.length !== 0) {
+                moveHandler(evt);
+                return;
+            }
+            ChristmassControl.removeEventListener('mousemove', moveHandler);
+            ChristmassControl.removeEventListener('mouseup', upHandler);
+            ChristmassControl.removeEventListener('touchmove', moveHandler);
+            ChristmassControl.removeEventListener('touchend', upHandler);
+            ChristmassControl.removeEventListener('touchcancel', upHandler);
+            mouseIsDown = false;
+            touchColorsById = {};
+            touchColorIx = 0;
+            evt.preventDefault();
+            evt.stopPropagation();
+        };
+
+        const mouseDownHandler = (evt) => {
+            mouseIsDown = true;
+            moveHandler(evt);
+            ChristmassControl.addEventListener('mousemove', moveHandler);
+            ChristmassControl.addEventListener('mouseup', upHandler);
+            evt.preventDefault();
+            evt.stopPropagation();
+        }
+
+        const touchStartHandler = (evt) => {
+            mouseIsDown = true;
+            moveHandler(evt);
+            ChristmassControl.addEventListener('touchmove', moveHandler);
+            ChristmassControl.addEventListener('touchend', upHandler);
+            ChristmassControl.addEventListener('touchcancel', upHandler);
+            evt.preventDefault();
+            evt.stopPropagation()
+        }
+
+        ChristmassControl.addEventListener('mousedown', mouseDownHandler, true);
+        ChristmassControl.addEventListener('touchstart', touchStartHandler, true);
+
+        function sendCommand(s) {
+            window.websocket.send(s)
+        }
+
+        packetStart = Date.now()
+        packetCount = 0;
+        // var lights = []
+        // for (var i=0; i<50; i++) {
+        //     lights.push(El('div',Lightstrip,'pixel'));
+        // }
+        window.websocket = new WebSocket("ws://192.168.1.133/ws");
+        window.websocket.onmessage = function (event) {
+            if (event.type === "message") {
+                if (event.data instanceof Blob) {
+                    packetCount++;
+                    let ellapsed = Date.now() - packetStart;
+                    if (ellapsed>1000) {
+                        console.log(packetCount*1000/ellapsed)
+                        packetCount = 0;
+                        packetStart = Date.now()
+                    }
+                    var useableData;
+                    var fileReader = new FileReader();
+                    fileReader.onload = (event) => {
+                        useableData = new Uint8Array(event.target.result);
+                        setPixelData(useableData);
+                    }
+
+                    fileReader.readAsArrayBuffer(event.data);
+                } else {
+                    console.log('WS: ', event.data);
+                    packetCount = 0;
+
+                }
+            } else {
+                console.log('WS-event: ', event);
+            }
+        }
+
+        const commands = {
+            single: () => singleMode = !singleMode,
+            fire: () => sendCommand('fire'),
+            pause: () => {
+                sendCommand(paused ? 'resume' : 'pause');
+                paused = !paused;
+            }
+
+        }
+
+        function updateUI() {
+            SingleButton.innerText = singleMode ? 'spot' : 'single';
+            PauseButton.innerText = paused ? 'resume' : 'pause';
+            if (singleMode) {
+                ChristmassControl.classList.remove('hide-color-divs')
+            } else {
+                ChristmassControl.classList.add('hide-color-divs')
+            }
+        }
+
+        function cmd(command) {
+            command();
+            updateUI();
+        }
+        updateUI();
+    </script>
+</body>

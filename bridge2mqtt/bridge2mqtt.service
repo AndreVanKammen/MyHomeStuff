@@ -1,0 +1,13 @@
+[Unit]
+Description=Bridge for modbus and p1 to mqtt
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/
+ExecStart=/home/pi/bridge2mqtt/bridge2mqtt
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ffffff">
+<title>Licht</title>
+<style>
+    body
+    {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: black;
+        color: white;
+        overflow-y:auto;
+        vertical-align:middle;
+    }
+    .label
+    {
+        font:20px sans-serif;
+        margin:3%;
+        padding:3%;
+        display:inline-block;
+        width:40%;
+        height:40px;
+    }
+    button
+    {
+        display:inline-block;
+        width:20%;
+        height:40px;
+    }
+</style>
+<script>
+    try
+    {
+        screen.orientation.lock("portrait");
+    } catch (exc) {
+        console.log('orientation lock failed!');
+    }
+    function doTank(m1, m2) {
+        m1 = ~~m1;
+        m2 = ~~m2;
+        console.log(m1, ',', m2);
+        var oReq = new XMLHttpRequest();
+        oReq.onload = function () {
+        };
+        oReq.open("GET", "http://192.168.1.16/cmd?m1=" + m1 + "&m2=" + m2);
+        oReq.send();
+    }
+
+    var division = 10;
+    var state = 0;
+    var timer = null;
+    var m1s = [0,768,1023,-768,-1023,  768, 1023,  -768, -1023, -768];
+    var m2s = [0,768,1023,1023, 1023, -768,-1023, -1023, -1023, -768];
+    function wobble() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+            doTank(0, 0);
+        } else {
+            timer = setInterval(function () {
+                state = (state + 1) % (m1s.length * division);
+                var curState = ~~(state / division);
+                var m1a = m1s[(curState + m1s.length - 1) % m1s.length];
+                var m2a = m2s[(curState + m1s.length - 1) % m1s.length];
+                var m1b = m1s[curState];
+                var m2b = m2s[curState];
+                var perc = (state % division) / division;
+                console.log(m1a, ',', m1b, ',', perc);
+                doTank(m1a * (1 - perc) + m1b * perc,
+                       m2a * (1 - perc) + m2b * perc);
+            }, 80);
+        }
+    }
+
+    function stop() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+        doTank(0, 0);
+    }
+
+</script>
+<body>
+    <center>
+    <div style="max-width: 800px">
+        <button onclick="javascript:doTank(1023,1023)" class>vooruit</button>
+        <div class="label">100%</div>
+        <button onclick="javascript:doTank(-1023,-1023)">achteruit</button>
+        <br /><button onclick="javascript:doTank(512,512)" class>vooruit</button>
+        <div class="label">50%</div>
+        <button onclick="javascript:doTank(-512,-512)">achteruit</button>
+        <br /><button onclick="javascript:doTank(-1023,1023)" class>links</button>
+        <div class="label">100%</div>
+        <button onclick="javascript:doTank(1023,-1023)">rechts</button>
+        <br /><button onclick="javascript:doTank(0,1023)" class>links</button>
+        <div class="label">50%</div>
+        <button onclick="javascript:doTank(1023,0)">rechts</button>
+        <br /><button onclick="javascript:stop()" class>stop</button>
+        <div class="label">-</div>
+        <button onclick="javascript:wobble(0,0)" class>wobble</button>
+    </div>
+    </center>
+</body>
+

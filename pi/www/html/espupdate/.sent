@@ -1,0 +1,523 @@
+update sent to 5C:CF:7F:F8:77:06.Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.130
+    [REMOTE_PORT] => 19933
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_USER_AGENT] => ESP8266-http-Update
+    [HTTP_CONNECTION] => close
+    [HTTP_X_ESP8266_STA_MAC] => 5C:CF:7F:F8:77:06
+    [HTTP_X_ESP8266_AP_MAC] => 5E:CF:7F:F8:77:06
+    [HTTP_X_ESP8266_FREE_SPACE] => 798720
+    [HTTP_X_ESP8266_SKETCH_SIZE] => 249152
+    [HTTP_X_ESP8266_CHIP_SIZE] => 4194304
+    [HTTP_X_ESP8266_SDK_VERSION] => 1.5.3(aec24ac9)
+    [HTTP_X_ESP8266_MODE] => sketch
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492469270.054
+    [REQUEST_TIME] => 1492469270
+)
+update sent to 5C:CF:7F:F8:77:06.Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.130
+    [REMOTE_PORT] => 29053
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_USER_AGENT] => ESP8266-http-Update
+    [HTTP_CONNECTION] => close
+    [HTTP_X_ESP8266_STA_MAC] => 5C:CF:7F:F8:77:06
+    [HTTP_X_ESP8266_AP_MAC] => 5E:CF:7F:F8:77:06
+    [HTTP_X_ESP8266_FREE_SPACE] => 798720
+    [HTTP_X_ESP8266_SKETCH_SIZE] => 249152
+    [HTTP_X_ESP8266_CHIP_SIZE] => 4194304
+    [HTTP_X_ESP8266_SDK_VERSION] => 1.5.3(aec24ac9)
+    [HTTP_X_ESP8266_MODE] => sketch
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492469378.186
+    [REQUEST_TIME] => 1492469378
+)
+update sent to .Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.8
+    [REMOTE_PORT] => 56036
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_PRAGMA] => no-cache
+    [HTTP_CACHE_CONTROL] => no-cache
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, sdch
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.8,nl;q=0.6,de;q=0.4
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492469394.9494
+    [REQUEST_TIME] => 1492469394
+)
+update sent to 5C:CF:7F:F8:77:06.Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.130
+    [REMOTE_PORT] => 28287
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_USER_AGENT] => ESP8266-http-Update
+    [HTTP_CONNECTION] => close
+    [HTTP_X_ESP8266_STA_MAC] => 5C:CF:7F:F8:77:06
+    [HTTP_X_ESP8266_AP_MAC] => 5E:CF:7F:F8:77:06
+    [HTTP_X_ESP8266_FREE_SPACE] => 798720
+    [HTTP_X_ESP8266_SKETCH_SIZE] => 249152
+    [HTTP_X_ESP8266_CHIP_SIZE] => 4194304
+    [HTTP_X_ESP8266_SDK_VERSION] => 1.5.3(aec24ac9)
+    [HTTP_X_ESP8266_MODE] => sketch
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492469449.7023
+    [REQUEST_TIME] => 1492469449
+)
+update sent to .Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.8
+    [REMOTE_PORT] => 56122
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_PRAGMA] => no-cache
+    [HTTP_CACHE_CONTROL] => no-cache
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, sdch
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.8,nl;q=0.6,de;q=0.4
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492469455.8271
+    [REQUEST_TIME] => 1492469455
+)
+update sent to .Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.8
+    [REMOTE_PORT] => 56197
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_PRAGMA] => no-cache
+    [HTTP_CACHE_CONTROL] => no-cache
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, sdch
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.8,nl;q=0.6,de;q=0.4
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492469499.8034
+    [REQUEST_TIME] => 1492469499
+)
+update sent to 5C:CF:7F:F8:77:06.Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.130
+    [REMOTE_PORT] => 22578
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_USER_AGENT] => ESP8266-http-Update
+    [HTTP_CONNECTION] => close
+    [HTTP_X_ESP8266_STA_MAC] => 5C:CF:7F:F8:77:06
+    [HTTP_X_ESP8266_AP_MAC] => 5E:CF:7F:F8:77:06
+    [HTTP_X_ESP8266_FREE_SPACE] => 798720
+    [HTTP_X_ESP8266_SKETCH_SIZE] => 249152
+    [HTTP_X_ESP8266_CHIP_SIZE] => 4194304
+    [HTTP_X_ESP8266_SDK_VERSION] => 1.5.3(aec24ac9)
+    [HTTP_X_ESP8266_MODE] => sketch
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492469608.2101
+    [REQUEST_TIME] => 1492469608
+)
+update sent to .Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.8
+    [REMOTE_PORT] => 56573
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_PRAGMA] => no-cache
+    [HTTP_CACHE_CONTROL] => no-cache
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, sdch
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.8,nl;q=0.6,de;q=0.4
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492469779.3461
+    [REQUEST_TIME] => 1492469779
+)
+update sent to .Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.8
+    [REMOTE_PORT] => 56882
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_PRAGMA] => no-cache
+    [HTTP_CACHE_CONTROL] => no-cache
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, sdch
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.8,nl;q=0.6,de;q=0.4
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492470006.9046
+    [REQUEST_TIME] => 1492470006
+)
+update sent to .Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.8
+    [REMOTE_PORT] => 56901
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_PRAGMA] => no-cache
+    [HTTP_CACHE_CONTROL] => no-cache
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, sdch
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.8,nl;q=0.6,de;q=0.4
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492470019.9303
+    [REQUEST_TIME] => 1492470019
+)
+update sent to 5C:CF:7F:F8:77:06.Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.130
+    [REMOTE_PORT] => 13562
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_USER_AGENT] => ESP8266-http-Update
+    [HTTP_CONNECTION] => close
+    [HTTP_X_ESP8266_STA_MAC] => 5C:CF:7F:F8:77:06
+    [HTTP_X_ESP8266_AP_MAC] => 5E:CF:7F:F8:77:06
+    [HTTP_X_ESP8266_FREE_SPACE] => 798720
+    [HTTP_X_ESP8266_SKETCH_SIZE] => 249152
+    [HTTP_X_ESP8266_CHIP_SIZE] => 4194304
+    [HTTP_X_ESP8266_SDK_VERSION] => 1.5.3(aec24ac9)
+    [HTTP_X_ESP8266_MODE] => sketch
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492470105.5741
+    [REQUEST_TIME] => 1492470105
+)
+update sent to .Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.8
+    [REMOTE_PORT] => 57089
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_PRAGMA] => no-cache
+    [HTTP_CACHE_CONTROL] => no-cache
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, sdch
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.8,nl;q=0.6,de;q=0.4
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492470158.7142
+    [REQUEST_TIME] => 1492470158
+)
+update sent to .Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.8
+    [REMOTE_PORT] => 57242
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_PRAGMA] => no-cache
+    [HTTP_CACHE_CONTROL] => no-cache
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, sdch
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.8,nl;q=0.6,de;q=0.4
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492470271.8033
+    [REQUEST_TIME] => 1492470271
+)
+update sent to .Array
+(
+    [USER] => www-data
+    [HOME] => /var/www
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/espupdate/update.php
+    [QUERY_STRING] => 
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /espupdate/update.php
+    [REQUEST_URI] => /espupdate/update.php
+    [DOCUMENT_URI] => /espupdate/update.php
+    [DOCUMENT_ROOT] => /var/www/html
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.2
+    [REMOTE_ADDR] => 192.168.1.8
+    [REMOTE_PORT] => 57536
+    [SERVER_ADDR] => 192.168.1.20
+    [SERVER_PORT] => 80
+    [SERVER_NAME] => _
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => 192.168.1.20
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_PRAGMA] => no-cache
+    [HTTP_CACHE_CONTROL] => no-cache
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, sdch
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.8,nl;q=0.6,de;q=0.4
+    [PHP_SELF] => /espupdate/update.php
+    [REQUEST_TIME_FLOAT] => 1492470473.8386
+    [REQUEST_TIME] => 1492470473
+)
